@@ -4,6 +4,8 @@ from models.page_util import hr_cal
 
 
 def second_page():
+    if '_language' not in st.session_state:
+        st.session_state['_language'] = 'chinese'
     if 'risk_value2_col1' not in st.session_state:
         st.session_state['risk_value2_col1'] = 1.0
     if 'risk_value2_col2' not in st.session_state:
@@ -223,6 +225,8 @@ def second_page():
 
 
 def second_page_en():
+    if '_language' not in st.session_state:
+        st.session_state['_language'] = 'chinese'
     if 'risk_value2_col1' not in st.session_state:
         st.session_state['risk_value2_col1'] = 1.0
     if 'risk_value2_col2' not in st.session_state:

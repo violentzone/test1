@@ -3,6 +3,8 @@ from streamlit_extras.stylable_container import stylable_container
 from models import baseline_model, prediction_model
 
 def run():
+    if '_language' not in st.session_state:
+        st.session_state['_language'] = 'chinese'
     # Set st.session_state which page to display
     if 'page' not in st.session_state:
         st.session_state['page'] = 'baseline_model'
