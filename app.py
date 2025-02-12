@@ -3,6 +3,9 @@ from models import baseline_model, prediction_model
 from layout_css import expander_layout
 from streamlit_extras.stylable_container import stylable_container
 
+if '_language' not in st.session_state:
+    st.session_state['_language'] = 'chinese'
+
 
 def run():
     st.set_page_config(layout="wide")
