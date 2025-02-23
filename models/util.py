@@ -4,6 +4,7 @@ import streamlit as st
 from math import exp
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+from typing import Literal
 from streamlit_extras.stylable_container import stylable_container
 
 class ShowHR:
@@ -219,7 +220,7 @@ def load_csv(data_path):
     return data
 
 
-def predict_plot(hr1: float, hr2: float, show_blue: bool, show_red: bool):
+def predict_plot(hr1: float, hr2: float, show_blue: bool, show_red: bool, show_label=True):
     baseline_hazard = load_csv("./models/baseline_hazard(1).csv")
     baseline_survival = np.exp(-baseline_hazard['hazard'])
     f = plt.figure('v1', figsize=(10, 3), facecolor='#FAF3DD', edgecolor='#FAF3DD')
@@ -234,8 +235,9 @@ def predict_plot(hr1: float, hr2: float, show_blue: bool, show_red: bool):
     plt.plot(baseline_hazard['time'], predicted_survival1, color='blue', label='Scenario 1')
 
     plt.title('')
-    plt.xlabel('Years after Sacubitril/Valsartan Initiation')
-    plt.ylabel('Survival Probability')
+    if show_label:
+        plt.xlabel('Years after Sacubitril/Valsartan Initiation')
+        plt.ylabel('Survival Probability')
     
     # 設定 X 軸的刻度為 1 年、2 年、3 年、4 年、5 年（以年份顯示）
     plt.xticks([12, 24, 36, 48, 60], ['1', '2', '3', '4', '5'])
