@@ -18,7 +18,7 @@ import streamlit as st
 def expander_layout():
     EXPANDER_LAYOUT = '''
         <style>
-            div[data-testid="stExpander"] details summary p{
+            div[data-testid="stExpander"] details streamlit-expanderHeader p{
             font-size: 1.5rem;
             font-weight: bold;
             }
