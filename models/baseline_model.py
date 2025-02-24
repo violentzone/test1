@@ -1,11 +1,13 @@
 import streamlit as st
 from models.util import ShowHR, calculate_and_set
+from layout_css import expander_layout
 
 import base64
 
 
 # ==========
 def baseline_view():
+    expander_layout()
     if '_language' not in st.session_state:
         st.session_state['_language'] = 'chinese'
     st.subheader('您準備好來吃健安心了嗎?')
@@ -46,7 +48,7 @@ def baseline_view():
     enter_col1, enter_col2 = st.columns(2)
 
     # Hight, weight and BMI
-    with st.expander(':man-frowning: :violet[基本資料]'):
+    with st.expander(':man-frowning: :violet[基礎狀況]'):
         age = st.number_input('###### 年齡 ######', step=1, value=None)
         if age is None:
             age = 0
@@ -188,8 +190,8 @@ def baseline_view():
                 st.write(f'###### 主動脈瓣逆流程度 ######')
                 ar_none = st.checkbox('None', key='ar_none', value=True)
             with col1_1:
-                ar = st.selectbox(' ', [['trace/trivial', 0.5], ['mild', 1], ['mild to moderate', 1.5], ['moderate', 2],
-                                        ['moderate to severe', 2.5], ['severe', 3]], label_visibility='visible', disabled=ar_none, help='AR: Aortic Regurgitation', format_func=lambda x: x[0])
+                ar = st.selectbox(' ', [['些微', 0.5], ['輕度', 1], ['輕度至中度', 1.5], ['中度', 2],
+                                        ['中度至重度', 2.5], ['重度', 3]], label_visibility='visible', disabled=ar_none, help='AR: Aortic Regurgitation', format_func=lambda x: x[0])
                 ar_value = ar[1]
             with col2:
                 st.write(f'###### 右心室大小 ######')
@@ -281,6 +283,7 @@ def baseline_view():
 
 
 def baseline_view_en():
+    expander_layout()
     if '_language' not in st.session_state:
         st.session_state['_language'] = 'english'
     st.subheader('Entresto initiation')

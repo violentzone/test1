@@ -1,9 +1,11 @@
 import streamlit as st
 from models.util import ShowHR
 from models.page_util import hr_cal
+from layout_css import expander_layout
 
 
 def second_page():
+    expander_layout()
     if '_language' not in st.session_state:
         st.session_state['_language'] = 'chinese'
     if 'risk_value2_col1' not in st.session_state:
@@ -224,6 +226,7 @@ def second_page():
 
 
 def second_page_en():
+    expander_layout()
     if '_language' not in st.session_state:
         st.session_state['_language'] = 'english'
     if 'risk_value2_col1' not in st.session_state:

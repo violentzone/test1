@@ -18,8 +18,8 @@ import streamlit as st
 def expander_layout():
     EXPANDER_LAYOUT = '''
         <style>
-            div[data-testid="stExpander"] div[role="button"] p {
-            font-size: 1rem;
+            div[data-testid="stExpander"] details summary p{
+            font-size: 1.5rem;
             font-weight: bold;
             }
         </style>

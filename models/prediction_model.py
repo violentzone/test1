@@ -1,9 +1,11 @@
 import streamlit as st
 from models.util import calculate_and_set, predict_plot, HrControl
+from layout_css import expander_layout
 
 
 # ==========
 def prediction_view():
+    expander_layout()
     st.subheader('存活曲線預測')
     # Set "pred_copy" related controls
     if "pred_copy" not in st.session_state:
@@ -54,15 +56,14 @@ def prediction_view():
         col1, col2 = st.columns([1, 50])
         with col1:
             st.markdown('#')
-            st.markdown('#')
-            st.write('#### :blue[存活機率] ####')
+            st.write('#### :gray[存活機率] ####')
         with col2:
             prediction = predict_plot(hr1, hr2, st.session_state['showblue'], st.session_state['showred'], show_label=False)
             print('blue/red: ', st.session_state['showblue'],  st.session_state['showred'])
             st.pyplot(prediction)
             col1, col2, col3 = st.columns(3)
             with col2:
-                st.write('#### :blue[開始使用健安心之後 (年)] ####')
+                st.write('#### :gray[開始使用健安心之後 (年)] ####')
 
     # place the holder here
     enter_col1, enter_col2 = st.columns(2)
@@ -161,7 +162,7 @@ def prediction_view():
             else:
                 p2y12 = 1
 
-    with st.expander('🩸 :orange[抽血報告]'):
+    with st.expander('🩸 :red[抽血報告]'):
         with st.container():
             col1, col1_1, space, col2, col3 = st.columns([3, 6, 3, 3, 6])
             with col1:
@@ -204,7 +205,7 @@ def prediction_view():
             if rdw_cv is None:
                 rdw_cv = 14.5
 
-    with st.expander('❤️ :red[心臟超音波報告]'):
+    with st.expander('❤️ :orange[心臟超音波報告]'):
         with st.container():
             col1, col1_1, space1, col2, col2_1 = st.columns([3, 6, 3, 3, 6])
             with col1:
@@ -314,6 +315,7 @@ def prediction_view():
 
 
 def prediction_view_en():
+    expander_layout()
     st.subheader('Survival Prediction')
     # Set "pred_copy" related controls
     if "pred_copy" not in st.session_state:
@@ -461,7 +463,7 @@ def prediction_view_en():
             else:
                 p2y12 = 1
 
-    with st.expander('🩸 :orange[Lab data]'):
+    with st.expander('🩸 :red[Lab data]'):
         with st.container():
             col1, col1_1, space, col2, col3 = st.columns([3, 6, 3, 3, 6])
             with col1:
@@ -504,7 +506,7 @@ def prediction_view_en():
             if rdw_cv is None:
                 rdw_cv = 14.5
 
-    with st.expander('❤️ :red[Cardiac parameters of echocardiography]'):
+    with st.expander('❤️ :orange[Cardiac parameters of echocardiography]'):
         with st.container():
             col1, col1_1, space1, col2, col2_1 = st.columns([3, 6, 3, 3, 6])
             with col1:
